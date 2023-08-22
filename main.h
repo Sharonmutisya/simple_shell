@@ -125,7 +125,7 @@ char *find_path(info_t *, char *, char *);
 /* loophsh.c */
 int loophsh(char **);
 
-/* toem_errors.c */
+/* toem_error.c */
 void _eputs(char *);
 int _eputchar(char);
 int _putfd(char c, int fd);
@@ -178,9 +178,9 @@ int _myexit(info_t *);
 int _mycode(info_t *info);
 int _myhelp(info_t *);
 
-/* toem_builtin1.c */
-int _myhistory(info_t *);
-int _myalias(info_t *);
+/* toem_myalias.c */
+int _myhistory(info_t *info);
+int _myalias(info_t *info);
 
 /*toem_getline.c */
 ssize_t get_input(info_t *);
@@ -192,7 +192,7 @@ void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 
-/* toem_environ.c */
+/* toem_environment.c */
 char *_getenv(info_t *, const char *);
 int _myenv(info_t *);
 int _mysetenv(info_t *);

@@ -20,13 +20,13 @@ int _myenv(info_t *info)
 char *_getenv(info_t *info, const char *name)
 {
 	list_t *node = info->env;
-	char *p;
+	char *b;
 
 	while (node)
 	{
-		p = starts_with(node->str, name);
-		if (p && *p)
-			return (p);
+		b = starts_with(node->str, name);
+		if (b && *b)
+			return (b);
 		node = node->next;
 	}
 	return (NULL);
@@ -51,7 +51,7 @@ int _mysetenv(info_t *info)
 }
 
 /**
- * _myunsetenv - Detaches environment variable
+ * _myunsetenv - Removes environment variable
  * @info: Structure containing potential arguments.
  * Return: Always 0
  */
@@ -71,7 +71,7 @@ int _myunsetenv(info_t *info)
 }
 
 /**
- * populate_env_list - occupies environment linked list
+ * populate_env_list - inhabits environment linked list
  * @info: Structure containing potential arguments.
  * Return: Always 0
  */
