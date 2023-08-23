@@ -45,8 +45,7 @@ int hsh(info_t *info, char **av)
 
 /**
  * find_builtin - finds a builtin command
- * @info: the parameter & return info struct
- *
+ * @info: Parameter & return information structure.
  * Return: -1 if builtin not found,
  *			0 if builtin executed successfully,
  *			1 if builtin found but not successful,
@@ -62,7 +61,7 @@ int find_builtin(info_t *info)
 		{"history", _myhistory},
 		{"setenv", _mysetenv},
 		{"unsetenv", _myunsetenv},
-		{"cd", _mycd},
+		{"cd", _mycode},
 		{"alias", _myalias},
 		{NULL, NULL}
 	};
@@ -78,9 +77,8 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - finds a command in PATH
- * @info: the parameter & return info struct
- *
+ * find_cmd - finds command in PATH
+ * @info: Parameter & return info structure.
  * Return: void
  */
 void find_cmd(info_t *info)
@@ -94,8 +92,8 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (j = 0, k = 0; info->arg[j]; i++)
-		if (!is_delim(info->arg[j], " \t\n"))
+	for (j = 0, k = 0; info->arg[j]; j++)
+		if (!is_del(info->arg[j], " \t\n"))
 			k++;
 	if (!k)
 		return;
@@ -120,9 +118,8 @@ void find_cmd(info_t *info)
 }
 
 /**
- * fork_cmd - forks a an exec thread to run cmd
- * @info: the parameter & return info struct
- *
+ * fork_cmd - forks an executable thread to run cmd
+ * @info: Parameter & return info structure.
  * Return: void
  */
 void fork_cmd(info_t *info)
