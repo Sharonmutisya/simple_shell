@@ -2,9 +2,8 @@
 
 /**
  * is_cmd - determine if a file is an executable command
- * @info: the info struct
- * @path: file path
- *
+ * @info: information structure.
+ * @path: File path.
  * Return: 1 if true, 0 otherwise
  */
 int is_cmd(info_t *info, char *path)
@@ -24,10 +23,9 @@ int is_cmd(info_t *info, char *path)
 
 /**
  * dup_chars - character duplicater
- * @pathstr: the PATH string
+ * @pathstr: PATH string
  * @start: index to start
  * @stop: index to stop
- *
  * Return: pointer to new buffer
  */
 char *dup_chars(char *pathstr, int start, int stop)
@@ -44,9 +42,9 @@ char *dup_chars(char *pathstr, int start, int stop)
 
 /**
  * find_path - finds this cmd in the PATH string
- * @info: the info struct
- * @pathstr: the PATH string
- * @cmd: the cmd to find
+ * @info: Information structure.
+ * @pathstr: The PATH string.
+ * @cmd: The cmd to find.
  *
  * Return: full path of cmd if found or NULL
  */
@@ -66,7 +64,7 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	{
 		if (!pathstr[j] || pathstr[j] == ':')
 		{
-			path = dup_chars(pathstr, curr_pos, i);
+			path = dup_chars(pathstr, curr_pos, j);
 			if (!*path)
 				_strcat(path, cmd);
 			else
@@ -84,4 +82,3 @@ char *find_path(info_t *info, char *pathstr, char *cmd)
 	}
 	return (NULL);
 }
-
