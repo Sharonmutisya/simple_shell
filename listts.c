@@ -25,33 +25,32 @@ size_t list_len(const list_t *h)
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
-	size_t j = list_len(head);
+	size_t r = list_len(head);
 	char **strs;
 	char *str;
 
-	if (!head || !j)
+	if (!head || !r)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (j + 1));
+	strs = malloc(sizeof(char *) * (r + 1));
 	if (!strs)
 		return (NULL);
-	for (j = 0; node; node = node->next, j++)
+	for (r = 0; node; node = node->next, r++)
 	{
 		str = malloc(_strlen(node->str) + 1);
 		if (!str)
 		{
-			for (j = 0; j < j; j++)
-				free(strs[j]);
+			for (j = 0; j < r; j++)
+				free(strs[r]);
 			free(strs);
 			return (NULL);
 		}
 
 		str = _strcpy(str, node->str);
-		strs[j] = str;
+		strs[r] = str;
 	}
-	strs[j] = NULL;
+	strs[r] = NULL;
 	return (strs);
 }
-
 
 /**
  * print_list - prints all elements of list_t linked list
@@ -60,7 +59,7 @@ char **list_to_strings(list_t *head)
  */
 size_t print_list(const list_t *h)
 {
-	size_t j = 0;
+	size_t r = 0;
 
 	while (h)
 	{
@@ -70,9 +69,9 @@ size_t print_list(const list_t *h)
 		_puts(h->str ? h->str : "(nil)");
 		_puts("\n");
 		h = h->next;
-		j++;
+		r++;
 	}
-	return (j);
+	return (r);
 }
 
 /**
@@ -104,14 +103,14 @@ list_t *node_starts_with(list_t *node, char *prefix, char c)
  */
 ssize_t get_node_index(list_t *head, list_t *node)
 {
-	size_t j = 0;
+	size_t r = 0;
 
 	while (head)
 	{
 		if (head == node)
-			return (j);
+			return (r);
 		head = head->next;
-		j++;
+		r++;
 	}
 	return (-1);
 }
