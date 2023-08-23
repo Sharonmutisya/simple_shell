@@ -83,7 +83,7 @@ int read_history(info_t *info)
 		return (free(buf), 0);
 	close(fd);
 	for (r = 0; r < fsize; r++)
-		if (buf[i] == '\n')
+		if (buf[r] == '\n')
 		{
 			buf[r] = 0;
 			build_history_list(info, buf + last, linecount++);
